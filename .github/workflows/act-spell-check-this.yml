@@ -1,0 +1,32 @@
+name: check act against spell-check-this
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  act:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          repository: check-spelling/spell-check-this
+          ref: prerelease
+
+      - name: Get act
+        env:
+          act_repo: nektos/act
+          act_variant: act_Linux_arm64.tar.gz
+        run: |
+          set -x
+          act_bin_dir=$(mktemp -d)
+          cd $(mktemp -d)
+          latest_act_version=$(gh release list -R $act_repo --json 'isLatest,name' -q '.[]|select(.isLatest==true)|.name')
+          gh release download -R $act_repo $latest_act_version -p $act_variant
+          tar zxf $act_variant
+          mv act $act_bin_dir
+          echo "$act_bin_dir" >> "$GITHUB_PATH"
+      - name: use act
+        run: |
+          act -v
