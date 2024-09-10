@@ -30,4 +30,4 @@ jobs:
           echo "$act_bin_dir" >> "$GITHUB_PATH"
       - name: use act
         run: |
-          act -v
+          act --bug-report
