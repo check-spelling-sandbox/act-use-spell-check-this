@@ -3,6 +3,8 @@ name: check act against spell-check-this
 on:
   push:
   workflow_dispatch:
+  schedule:
+    - cron: "0 13 * * *"
 
 jobs:
   act:
