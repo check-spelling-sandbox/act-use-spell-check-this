@@ -89,7 +89,7 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           (
-            act -s GH_TOKEN="$GH_TOKEN" -j spelling 2>&1
+            act -s GH_TOKEN="$GH_TOKEN" 2>&1
           ) | tee /tmp/act.run.log
           
       - name: upload logs for check-spelling
