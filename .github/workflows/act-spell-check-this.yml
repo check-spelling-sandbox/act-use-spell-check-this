@@ -28,6 +28,17 @@ jobs:
           tar zxf $act_variant
           mv act $act_bin_dir
           echo "$act_bin_dir" >> "$GITHUB_PATH"
+      - name: configure act
+        run: |
+          cat > ~/.actrc <<EOF
+          -P ubuntu-latest=catthehacker/ubuntu:act-latest
+          -P ubuntu-22.04=catthehacker/ubuntu:act-22.04
+          -P ubuntu-20.04=catthehacker/ubuntu:act-20.04
+          -P ubuntu-18.04=catthehacker/ubuntu:act-18.04
+          -P ubuntu-16.04=catthehacker/ubuntu:act-16.04
+          -P self-hosted=catthehacker/ubuntu:act-latest
+          --use-new-action-cache
+          EOF
       - name: use act
         run: |
-          act --bug-report
+          act -l
