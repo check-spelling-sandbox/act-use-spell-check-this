@@ -78,7 +78,7 @@ jobs:
       - uses: actions/checkout@v4
         if: success() || failure()
         with:
-          repository: check-spelling/check-spelling
+          repository: jsoref/check-spelling
           ref: prerelease
       - name: list workflows in check-spelling
         run: |
