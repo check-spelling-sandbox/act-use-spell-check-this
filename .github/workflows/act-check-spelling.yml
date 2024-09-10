@@ -1,4 +1,4 @@
-name: check act against spell-check-this
+name: check act against check-spelling
 
 on:
   push:
