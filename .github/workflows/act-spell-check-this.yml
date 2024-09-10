@@ -18,6 +18,7 @@ jobs:
         env:
           act_repo: nektos/act
           act_variant: act_Linux_arm64.tar.gz
+          GH_TOKEN: ${{ github.token }}
         run: |
           set -x
           act_bin_dir=$(mktemp -d)
