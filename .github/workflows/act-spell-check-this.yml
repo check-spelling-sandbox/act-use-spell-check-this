@@ -56,4 +56,12 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          act -s GH_TOKEN="$GH_TOKEN"
+          (
+            act -s GH_TOKEN="$GH_TOKEN" 2>&1
+          ) | tee /tmp/act.run.log
+      - name: upload logs
+        uses: actions/upload-artifact@v4
+        with:
+          name: logs
+          path: /tmp/act.run.log
+
