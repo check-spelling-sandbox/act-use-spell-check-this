@@ -41,12 +41,13 @@ jobs:
       - name: act --bug-report
         run: |
           (
-          echo '# act --bug-report'
+          echo '<details><summary>act --bug-report</summary>'
           echo
           echo '```'
           act --bug-report
           echo '```'
           echo
+          echo '</details>'
           ) >> "$GITHUB_STEP_SUMMARY"
 
       - name: checkout check-spelling/spell-check-this
