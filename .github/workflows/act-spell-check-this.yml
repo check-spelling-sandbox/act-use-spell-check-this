@@ -56,4 +56,4 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          act
+          act -s GH_TOKEN="$GH_TOKEN"
