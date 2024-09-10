@@ -39,6 +39,9 @@ jobs:
           -P self-hosted=catthehacker/ubuntu:act-latest
           --use-new-action-cache
           EOF
-      - name: use act
+      - name: list workflows
         run: |
           act -l
+      - name: run act
+        run: |
+          act
