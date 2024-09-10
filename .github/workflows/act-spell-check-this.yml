@@ -65,4 +65,4 @@ jobs:
         with:
           name: logs
           path: /tmp/act.run.log
-
+          retention-days: 7
