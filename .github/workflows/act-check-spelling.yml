@@ -102,12 +102,12 @@ jobs:
           MY_ACTIONS_RESULTS_URL: ${{ steps.action-tokens.outputs.ACTIONS_RESULTS_URL }}
           MY_ACTIONS_RUNTIME_URL: ${{ steps.action-tokens.outputs.ACTIONS_RUNTIME_URL }}
           MY_ACTIONS_RUNTIME_TOKEN: ${{ steps.action-tokens.outputs.ACTIONS_RUNTIME_TOKEN }}
-
         run: |
           (
             act \
+            -v \
             -s GH_TOKEN="$GH_TOKEN" \
-            --env ACTIONS_RESULTS_URL="$MY_ACTIONS_RESULTS_URL" \
+            --env NO_ACTIONS_RESULTS_URL="$MY_ACTIONS_RESULTS_URL" \
             --env ACTIONS_RUNTIME_URL="$MY_ACTIONS_RUNTIME_URL" \
             --env ACTIONS_RUNTIME_TOKEN="$MY_ACTIONS_RUNTIME_TOKEN" \
             2>&1
